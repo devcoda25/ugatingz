@@ -1,0 +1,24 @@
+ {%load static %}
+ 
+ <div class="col-lg-7 px-0">
+
+                <div class="owl-carousel main-carousel position-relative">
+                 {% for topic in news_topics %}
+                    <div class="position-relative overflow-hidden" style="height: 500px;">
+                        <img class="img-fluid h-100" src="{{ topic.image.url }}" style="object-fit: cover;">
+                        <div class="overlay">
+                            <div class="mb-2">
+                            {% for category in topic.category.all %}
+                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                    href="">{{ category.category_name }}</a>
+                                    {% endfor %}
+                                <a class="text-white" href="">{{topic.created_at}}</a>
+                            </div>
+                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">{{ topic.title }}</a>
+                        </div>
+                    </div>
+                     {% endfor %}
+                    
+                </div>
+               
+            </div>

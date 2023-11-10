@@ -1,12 +1,8 @@
 
 
 
-
 from pathlib import Path
 import os 
-
-
-
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,7 +34,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    #"Home",
+    "Home",
     'topics',
     'accounts',
 
@@ -72,6 +68,8 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
 
                 'topics.processor.menu_links',
+                'Home.api.news_topics',
+                'Home.api.latest_topics',
 
             ],
         },
@@ -140,6 +138,12 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'accounts.Account'
+
+
+
+
+AUTH_USER_MODEL = 'accounts.Account'
+
 
 
 

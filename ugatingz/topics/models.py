@@ -21,7 +21,9 @@ class Category(models.Model):
         return self.category_name
 
 class Views(models.Model):
-     view_counts = models.PositiveBigIntegerField(default=0,null=True)
+
+     view_counts = models.PositiveBigIntegerField(default=0,null=True,blank=True)
+
 
      class Meta:
         verbose_name = 'view'
@@ -32,7 +34,9 @@ class Views(models.Model):
 
 class Comment(models.Model):
   
-  text = models.TextField(max_length=500,unique=True,null=True)
+
+  text = models.TextField(max_length=500,unique=True,null=True,blank=True)
+
   created_at = models.DateTimeField(auto_now_add=True)
   parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, related_name='replies')
   
@@ -48,10 +52,13 @@ class Topic(models.Model):
    image = models.ImageField(upload_to='images/', blank=True, null=True)
    created_at = models.DateTimeField(auto_now_add=True)
    edited_at = models.DateTimeField(auto_now=True)
+
+   content = models.TextField(max_length=20000,null=True)
    link = models.URLField(blank=True, null=True)
-   Views = models.ForeignKey(Views,on_delete=models.CASCADE,default=0,null=True)
-   comments = models.ManyToManyField(Comment, related_name='topics')
-   category = models.ForeignKey(Category, on_delete=models.CASCADE)
+   Views = models.ForeignKey(Views,on_delete=models.CASCADE,default=0,null=True,blank=True)
+   comments = models.ManyToManyField(Comment, related_name='topics' ,null=True,blank=True)
+   category = models.ManyToManyField(Category, related_name='topics')
+
 
 
    
@@ -73,9 +80,17 @@ class Topic(models.Model):
 class Section(models.Model):
    topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name='sections')
    title = models.CharField(max_length=200)
-   content = models.TextField()
+
+   content = models.TextField(max_length=20000)
+
    image = models.ImageField(upload_to='images/', blank=True, null=True)
 
    class Meta:
         verbose_name = 'section'
         verbose_name_plural = 'sections'
+
+
+        
+   def __str__(self):
+        return self.title
+
