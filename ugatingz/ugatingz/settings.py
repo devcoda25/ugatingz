@@ -1,6 +1,7 @@
 
 
 
+
 from pathlib import Path
 import os 
 
@@ -21,7 +22,10 @@ SECRET_KEY = "django-insecure-#ih4*xl5v_85au1(wvkz7wpb6kvjs+vkd=r$_g9fem8l(*4n5$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['congenial-fiesta-69g6r7gq695ghgq4-46573.app.github.dev','localhost']
+CSRF_TRUSTED_ORIGINS = ['https://localhost:8000']
+
 
 
 # Application definition
@@ -34,7 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    "Home",
+    #"Home",
+    'topics',
+    'accounts',
 
 ]
 
@@ -64,6 +70,9 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+
+                'topics.processor.menu_links',
+
             ],
         },
     },
@@ -129,3 +138,8 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+AUTH_USER_MODEL = 'accounts.Account'
+
+
+
