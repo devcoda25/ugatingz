@@ -1,7 +1,13 @@
 
 
+
+
 from pathlib import Path
 import os 
+
+
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -15,6 +21,7 @@ SECRET_KEY = "django-insecure-#ih4*xl5v_85au1(wvkz7wpb6kvjs+vkd=r$_g9fem8l(*4n5$
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
 
 ALLOWED_HOSTS = ['congenial-fiesta-69g6r7gq695ghgq4-46573.app.github.dev','localhost']
 CSRF_TRUSTED_ORIGINS = ['https://localhost:8000']
@@ -30,9 +37,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
     #"Home",
     'topics',
     'accounts',
+
 ]
 
 MIDDLEWARE = [
@@ -50,7 +59,9 @@ ROOT_URLCONF = "ugatingz.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
+
         "DIRS": [os.path.join(BASE_DIR, 'templates'),],
+
 
         "APP_DIRS": True,
         "OPTIONS": {
@@ -59,7 +70,9 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+
                 'topics.processor.menu_links',
+
             ],
         },
     },
@@ -114,15 +127,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
 AUTH_USER_MODEL = 'accounts.Account'
+
 
 
