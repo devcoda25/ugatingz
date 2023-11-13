@@ -12,9 +12,11 @@
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
                                     href="">{{ category.category_name }}</a>
                                     {% endfor %}
-                                <a class="text-white" href="">{{topic.created_at}}</a>
+
+                                <div class="text-white" >{{topic.created_at}}</div>
                             </div>
-                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="">{{ topic.title }}</a>
+                            <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="{{ topic.get_url }}">{{ topic.title }}</a>
+
                         </div>
                     </div>
                      {% endfor %}

@@ -57,8 +57,8 @@ class Topic(models.Model):
    link = models.URLField(blank=True, null=True)
    Views = models.ForeignKey(Views,on_delete=models.CASCADE,default=0,null=True,blank=True)
    comments = models.ManyToManyField(Comment, related_name='topics' ,null=True,blank=True)
-   category = models.ManyToManyField(Category, related_name='topics')
 
+   category = models.ForeignKey(Category, related_name='topics', on_delete=models.CASCADE,null=True)
 
 
    
@@ -68,9 +68,13 @@ class Topic(models.Model):
         verbose_name_plural = 'topics'
 
    def get_url(self):
-        return reverse('topic_detail', args=[self.category.slug, self.slug])
 
-   
+      if self.category is not None:
+         return reverse('topic_detail', args=[self.category.slug, self.slug])
+      else:
+      # Provide a default value for category_slug
+         return reverse('topic_detail', args=['default_category', self.slug])
+
 
    def __str__(self):
         return self.title
@@ -80,7 +84,6 @@ class Topic(models.Model):
 class Section(models.Model):
    topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name='sections')
    title = models.CharField(max_length=200)
-
    content = models.TextField(max_length=20000)
 
    image = models.ImageField(upload_to='images/', blank=True, null=True)

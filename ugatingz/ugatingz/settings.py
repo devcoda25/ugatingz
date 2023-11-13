@@ -70,6 +70,9 @@ TEMPLATES = [
                 'topics.processor.menu_links',
                 'Home.api.news_topics',
                 'Home.api.latest_topics',
+                'Home.api.trending_topics',
+                'Home.api.other_topics',
+                'Home.api.random_topics',
 
             ],
         },
@@ -139,10 +142,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'accounts.Account'
 
-
-
-
-AUTH_USER_MODEL = 'accounts.Account'
 
 
 
